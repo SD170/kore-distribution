@@ -44,6 +44,13 @@ const OrderSchema = new mongoose_1.default.Schema({
         type: Number,
         select: false
     },
+}, {
+    toJSON: {
+        transform(doc, ret) {
+            delete ret.timeOffset;
+            delete ret.__v;
+        },
+    },
 });
 // Static method to get milk quanity left for the day
 OrderSchema.statics.getRemainingQuantity = function () {

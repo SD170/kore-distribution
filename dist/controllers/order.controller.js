@@ -255,6 +255,6 @@ exports.checkCapacity = (0, async_1.default)((req, res, next) => __awaiter(void 
         .json({
         success: true,
         message: `Capacity fetched successfully`,
-        data: result,
+        data: { quantityLeft: result },
     });
 }));

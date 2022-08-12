@@ -1,0 +1,10 @@
+GitHub URL: https://github.com/SD170/kore-distribution
+Deployed URL: https://kore-milk-distro.herokuapp.com/
+
+Description:
+The project was made using TypeScript.
+For testing and documenting the routes, Swagger is used.
+All the specified routes which were mentioned in the question are applied.
+Middleware is used for creating a Global Error-Handler, with a custom response status.
+Please check readme for more info about initializing the project.
+Deployed at heroku.

@@ -45,7 +45,7 @@ const swaggerOptions = {
     apis: ["./src/controllers/*.ts", "./src/routes/*.ts", "./dist/controllers/*.js", "./dist/routes/*.js"]
 };
 const swaggerDocs = (0, swagger_jsdoc_1.default)(swaggerOptions);
-app.use('/api-docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swaggerDocs));
+app.use('/', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swaggerDocs));
 //error middleware. create a response - should be at last
 app.use(error_1.default);
 const server = app.listen(PORT, () => {
