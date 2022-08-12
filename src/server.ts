@@ -61,7 +61,7 @@ const swaggerOptions = {
 
 const swaggerDocs = swaggerJsDocs(swaggerOptions);
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 //error middleware. create a response - should be at last
 app.use(errorHandler);

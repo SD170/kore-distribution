@@ -292,7 +292,7 @@ export const checkCapacity = asyncHandler(async (req: Request, res: Response, ne
         .json({
             success: true,
             message: `Capacity fetched successfully`,
-            data: result,
+            data: { quantityLeft: result },
         });
 
 });

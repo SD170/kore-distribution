@@ -31,13 +31,20 @@ const OrderSchema = new mongoose.Schema({
         type: Number,
         select: false
     },
+}, {
+    toJSON: {
+        transform(doc, ret) {
+            delete ret.timeOffset;
+            delete ret.__v;
+        },
+    },
 });
 
 
 // Static method to get milk quanity left for the day
 OrderSchema.statics.getRemainingQuantity = async function () {
 
-    
+
     const dailyLimit = parseInt(process.env.MAX_ORDER_PER_DAY!) || 100 // in litre
 
     //this -> the model itself
@@ -101,7 +108,7 @@ OrderSchema.pre("findOneAndUpdate", async function (next) {
         // @ts-ignore
         const getRemainingQuantityB = this.schema.statics.getRemainingQuantity.bind(this.model);
         const remainingQuantity = await getRemainingQuantityB();
-// @ts-ignore
+        // @ts-ignore
         if (remainingQuantity >= this._update.milkQuantity) {
             next();
         } else {
