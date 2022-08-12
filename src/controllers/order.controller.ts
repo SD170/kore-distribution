@@ -13,12 +13,12 @@ import ErrorResponse from '../utils/ErrorResponse';;
  *   description: get orders, you can filter also.
  *   parameters:
  *       - name: orderLocation
- *         description: Location of delivery.
+ *         description: Location of delivery (optional).
  *         in: query
  *         required: false
  *         type: string
  *       - name: status
- *         description: Status of the order.
+ *         description: Status of the order (optional).
  *         in: query
  *         required: false
  *         type: string
@@ -60,7 +60,7 @@ export const getOrders = asyncHandler(async (req: Request, res: Response, next: 
  *         required: true
  *         type: number
  *       - name: orderLocation
- *         description: Location of delivery.
+ *         description: Location of delivery (optional).
  *         in: formData
  *         required: false
  *         type: string
@@ -97,25 +97,25 @@ export const createOrder = asyncHandler(async (req: Request, res: Response, next
  * @swagger
  * /api/v1/orders/update/{id}:
  *  put:
- *   description: create an order 
+ *   description: Update an order 
  *   parameters:
  *       - name: id
- *         description: id of the order
+ *         description: id of the order.
  *         in: 'path'
  *         required: true
  *         type: string
  *       - name: milkQuantity
- *         description: Quantity of milk in litre.
+ *         description: Quantity of milk in litre (optional).
  *         in: formData
  *         required: true
  *         type: number
  *       - name: orderLocation
- *         description: Location of delivery.
+ *         description: Location of delivery (optional).
  *         in: formData
  *         required: false
  *         type: string
  *       - name: status
- *         description: Status of order.
+ *         description: Status of order (optional).
  *         in: formData
  *         required: false
  *         type: string
@@ -174,7 +174,7 @@ export const updateOrder = asyncHandler(async (req: Request, res: Response, next
  *       - name: status
  *         description: Status of order.
  *         in: formData
- *         required: false
+ *         required: true
  *         type: string
  *         enum: ["placed", "packed", "dispatched", "delivered"]
  *   responses:
