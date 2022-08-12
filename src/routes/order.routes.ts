@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createOrder, updateOrder, updateStatus, deleteOrder, checkCapacity } from '../controllers/order.controller';
+import { createOrder, updateOrder, updateStatus, deleteOrder, checkCapacity, getOrders} from '../controllers/order.controller';
 
 
 const router = Router();
@@ -7,6 +7,7 @@ const router = Router();
 
 
 
+router.route("/").get(getOrders);
 router.route("/add").post(createOrder);
 router.route("/update/:id").put(updateOrder);
 router.route("/updateStatus/:id").put(updateStatus);

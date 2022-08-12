@@ -5,6 +5,49 @@ import asyncHandler from "../middlewares/async";
 import ErrorResponse from '../utils/ErrorResponse';;
 
 
+
+/**
+ * @swagger
+ * /api/v1/orders/:
+ *  get:
+ *   description: get orders, you can filter also.
+ *   parameters:
+ *       - name: orderLocation
+ *         description: Location of delivery.
+ *         in: query
+ *         required: false
+ *         type: string
+ *       - name: status
+ *         description: Status of the order.
+ *         in: query
+ *         required: false
+ *         type: string
+ *   responses:
+ *     200:
+ *       description: Order fetched successfully
+ *     
+ * 
+ */
+
+//  @desc       get orders
+//  @route      POST /api/v1/orders
+//  @access     Public
+export const getOrders = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
+   
+    const orders = await OrderModel.find({ ...req.query });
+
+    res.status(200)
+        .json({
+            success: true,
+            message: `Orders fetched successfully`,
+            data: orders,
+        });
+
+});
+
+
+
+
 /**
  * @swagger
  * /api/v1/orders/add:
